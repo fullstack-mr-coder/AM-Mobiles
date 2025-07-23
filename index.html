@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM Mobiles - Premium Mobile Repair & Accessories</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-magic: #8b5cf6;
+            --bright-magic: #a78bfa;
+            --dark-magic: #7c3aed;
+            --secondary-magic: #06b6d4;
+            --accent-magic: #f59e0b;
+            --pure-white: #ffffff;
+            --off-white: #f8fafc;
+            --light-gray: #e2e8f0;
+            --dark-black: #1e1b4b;
+            --soft-black: #312e81;
+            --text-gray: #64748b;
+            --gradient-primary: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            --gradient-secondary: linear-gradient(135deg, #a78bfa, #f59e0b);
+            --gradient-dark: linear-gradient(135deg, #1e1b4b, #312e81);
+            --gradient-magic: linear-gradient(135deg, #8b5cf6, #06b6d4, #f59e0b);
+            --shadow-magic: 0 0 20px rgba(139, 92, 246, 0.3);
+            --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.2);
+            --shadow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--pure-white);
+            color: var(--dark-black);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--pure-white);
+            overflow: hidden;
+        }
+        
+        .bg-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary-magic);
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+            box-shadow: 0 0 10px var(--primary-magic);
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+        
+        /* Magical Bubbles */
+        .magic-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.2), rgba(245, 158, 11, 0.1));
+            animation: bubbleFloat 12s infinite ease-in-out;
+            box-shadow: 
+                0 0 20px rgba(139, 92, 246, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
+        }
+        
+        @keyframes bubbleFloat {
+            0%, 100% { 
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% { 
+                transform: translateY(90vh) translateX(20px) scale(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(50vh) translateX(-30px) scale(1.2);
+                opacity: 0.6;
+            }
+            90% { 
+                transform: translateY(10vh) translateX(40px) scale(0.8);
+                opacity: 0.4;
+            }
+        }
+        
+        /* Robot Repair Animation */
+        .repair-robot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            z-index: 1000;
+            cursor: pointer;
+            animation: robotHover 3s ease-in-out infinite;
+        }
+        
+        @keyframes robotHover {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        
+        .robot-body {
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(145deg, #8b5cf6, #06b6d4);
+            border-radius: 15px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 
+                0 0 20px rgba(139, 92, 246, 0.4),
+                inset 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: robotGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes robotGlow {
+            from { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2); }
+            to { box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3); }
+        }
+        
+        .robot-head {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .robot-eyes {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .robot-eye {
+            width: 6px;
+            height: 6px;
+            background: #f59e0b;
+            border-radius: 50%;
+            animation: robotBlink 3s infinite;
+            box-shadow: 0 0 8px #f59e0b;
+        }
+        
+        @keyframes robotBlink {
+            0%, 90%, 100% { opacity: 1; transform: scaleY(1); }
+            95% { opacity: 0.3; transform: scaleY(0.1); }
+        }
+        
+        .robot-arms {
+            position: absolute;
+            top: 20px;
+        }
+        
+        .robot-arm {
+            width: 25px;
+            height: 8px;
+            background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+            border-radius: 4px;
+            position: absolute;
+        }
+        
+        .robot-arm.left {
+            left: -30px;
+            animation: robotWorkLeft 2s ease-in-out infinite;
+            transform-origin: right center;
+        }
+        
+        .robot-arm.right {
+            right: -30px;
+            animation: robotWorkRight 2s ease-in-out infinite;
+            transform-origin: left center;
+        }
+        
+        @keyframes robotWorkLeft {
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(-45deg); }
+        }
+        
+        @keyframes robotWorkRight {
+            0%, 100% { transform: rotate(20deg); }
+            50% { transform: rotate(45deg); }
+        }
+        
+        .robot-tools {
+            position: absolute;
+            top: 15px;
+        }
+        
+        .robot-tool {
+            position: absolute;
+            font-size: 12px;
+            animation: toolSpark 1.5s ease-in-out infinite;
+        }
+        
+        .robot-tool.left {
+            left: -45px;
+            top: 5px;
+        }
+        
+        .robot-tool.right {
+            right: -45px;
+            top: 5px;
+        }
+        
+        @keyframes toolSpark {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .mobile-being-repaired {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            animation: mobileRepair 3s ease-in-out infinite;
+        }
+        
+        @keyframes mobileRepair {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(-2deg); }
+            75% { transform: translateX(-50%) rotate(2deg); }
+        }
+        
+        .repair-sparks {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .spark {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffff00;
+            border-radius: 50%;
+            animation: sparkFly 1s ease-out infinite;
+            box-shadow: 0 0 6px #ffff00;
+        }
+        
+        @keyframes sparkFly {
+            0% { 
+                opacity: 1; 
+                transform: translate(0, 0) scale(1); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translate(var(--spark-x, 20px), var(--spark-y, -20px)) scale(0); 
+            }
+        }
+        
+        /* Floating Tech Icons */
+        .tech-icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.3;
+            animation: techFloat 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes techFloat {
+            0% { 
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { 
+                transform: translateY(-100px) translateX(200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Circuit Animation */
+        .circuit-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            animation: circuitPulse 3s ease-in-out infinite;
+            opacity: 0.4;
+        }
+        
+        @keyframes circuitPulse {
+            0%, 100% { 
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            50% { 
+                transform: scaleX(1);
+                opacity: 0.6;
+            }
+        }
+        
+        /* Magic Wand Effect */
+        .magic-wand {
+            position: absolute;
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+            border-radius: 2px;
+            animation: wandMove 4s ease-in-out infinite;
+            transform-origin: left center;
+        }
+        
+        @keyframes wandMove {
+            0%, 100% { 
+                transform: rotate(45deg) translateX(0);
+                opacity: 0;
+            }
+            25%, 75% { 
+                opacity: 1;
+            }
+            50% { 
+                transform: rotate(45deg) translateX(30px);
+                opacity: 1;
+            }
+        }
+        
+        .magic-trail {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            animation: trailFade 1s ease-out infinite;
+            box-shadow: 0 0 10px #8b5cf6;
+        }
+        
+        @keyframes trailFade {
+            0% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0);
+            }
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--primary-magic);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-magic);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: var(--shadow-magic);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--dark-black);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-magic);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-black);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .cart-icon {
+            position: relative;
+            background: var(--gradient-primary);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-magic);
+        }
+        
+        .cart-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--dark-black);
+            color: var(--pure-white);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--off-white) 50%, var(--pure-white) 100%);
+            overflow: hidden;
+            padding: 2rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%23ff6600" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%23ff8533" opacity="0.3"/><circle cx="80" cy="80" r="2" fill="%23ff6600" opacity="0.3"/></pattern></defs><rect width="1200" height="800" fill="url(%23circuit)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: heroFadeIn 1.5s ease;
+        }
+        
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-description {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+        }
+        
+        .cta-secondary:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+        
+        /* Contact Info Bar */
+        .contact-bar {
+            background: var(--gradient-dark);
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--pure-white);
+        }
+        
+        .contact-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 102, 0, 0.2), transparent);
+            animation: shimmer 4s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--pure-white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .section-title p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--pure-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--primary-orange);
+        }
+        
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .service-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-black);
+            text-transform: uppercase;
+        }
+        
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 5rem 2rem;
+            background: var(--off-white);
+            position: relative;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--pure-white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--light-gray);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-black);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--pure-white);
+            color: var(--dark-black);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .issue-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .checkbox-group:hover {
+            border-color: var(--primary-orange);
+            background: rgba(255, 102, 0, 0.05);
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-orange);
+        }
+        
+        .checkbox-group label {
+            font-weight: 500;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .captcha-container {
+            background: var(--off-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .captcha-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-black);
+            margin-bottom: 1rem;
+        }
+        
+        .captcha-input {
+            width: 150px;
+            padding: 0.8rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .captcha-refresh {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin-left: 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .captcha-refresh:hover {
+            background: var(--dark-orange);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background: var(--pure-white);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .filter-btn.active::before,
+        .filter-btn:hover::before {
+            left: 0;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            color: white;
+            border-color: var(--primary-orange);
+            box-shadow: var(--shadow-orange);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--pure-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--primary-orange);
+        }
+        
+        .product-image {
+            height: 250px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .product-card:hover .product-image::before {
+            transform: translateX(100%);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--dark-black);
+            color: var(--pure-white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            animation: badgePulse 2s infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .action-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 102, 0, 0.9);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .action-btn:hover {
+            background: var(--dark-black);
+            color: var(--pure-white);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-orange);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-black);
+            text-transform: uppercase;
+        }
+        
+        .product-description {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .current-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-gray);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .add-to-cart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .add-to-cart:hover::before {
+            left: 100%;
+        }
+        
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: var(--pure-white);
+            border-left: 2px solid var(--primary-orange);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-sidebar.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            padding: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--off-white);
+        }
+        
+        .cart-header h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-black);
+            text-transform: uppercase;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-cart:hover {
+            color: var(--primary-orange);
+            transform: rotate(90deg);
+        }
+        
+        .cart-items {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: var(--pure-white);
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+            background: var(--off-white);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-black);
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-price {
+            color: var(--primary-orange);
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--primary-orange);
+            background: transparent;
+            color: var(--primary-orange);
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+        
+        .cart-footer {
+            padding: 2rem;
+            border-top: 2px solid var(--light-gray);
+            background: var(--off-white);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--gradient-dark);
+            padding: 3rem 2rem 1rem;
+            border-top: 2px solid var(--primary-orange);
+            color: var(--pure-white);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+            text-transform: uppercase;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background: var(--dark-black);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-orange);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 102, 0, 0.3);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--light-gray);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .services-grid,
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--pure-white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                border-top: 2px solid var(--primary-orange);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero {
+                padding: 1rem;
+                min-height: 80vh;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .services-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .issue-type-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-filter {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+            
+            .filter-btn {
+                white-space: nowrap;
+                min-width: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-card,
+            .product-card {
+                margin: 0 0.5rem;
+            }
+            
+            .form-container {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .captcha-input {
+                width: 120px;
+            }
+            
+            .captcha-refresh {
+                margin-left: 0.5rem;
+                padding: 0.6rem 0.8rem;
+            }
+        }
+        
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <!-- Repair Robot Animation -->
+    <div class="repair-robot" id="repairRobot" title="AM Mobiles Repair Bot - Click me!">
+        <div class="mobile-being-repaired">📱</div>
+        <div class="repair-sparks" id="repairSparks"></div>
+        <div class="robot-body">
+            <div class="robot-head">
+                <div class="robot-eyes">
+                    <div class="robot-eye"></div>
+                    <div class="robot-eye"></div>
+                </div>
+            </div>
+            <div class="robot-arms">
+                <div class="robot-arm left"></div>
+                <div class="robot-arm right"></div>
+            </div>
+            <div class="robot-tools">
+                <div class="robot-tool left">🔧</div>
+                <div class="robot-tool right">⚡</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="logo-container">
+                <div class="logo-placeholder">AM</div>
+                <div class="logo-text">AM MOBILES</div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#contact-form" class="nav-link">Report Issue</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <button class="cart-icon" id="cartToggle">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>AM MOBILES</h1>
+            <div class="hero-subtitle">Premium Mobile Repair & Accessories</div>
+            <p class="hero-description">
+                Your trusted destination for professional mobile repairs and premium accessories. 
+                We fix all mobile brands with genuine parts and provide 365 days of quality service.
+            </p>
+            <div class="hero-buttons">
+                <a href="#services" class="cta-button">Our Services</a>
+                <a href="#contact-form" class="cta-button cta-secondary">Report Issue</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Bar -->
+    <div class="contact-bar">
+        <div class="contact-info">
+            <div class="contact-item">
+                <i>📍</i>
+                <span>Warramgadda, Near Railway Gate</span>
+            </div>
+            <div class="contact-item">
+                <i>📞</i>
+                <span>6305045880</span>
+            </div>
+            <div class="contact-item">
+                <i>🕒</i>
+                <span>Open Daily: 9:00 AM - 9:00 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Professional mobile repair services with genuine parts and expert technicians</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in-up">
+                <div class="service-icon">📱</div>
+                <h3>Screen Repair</h3>
+                <p>Professional screen replacement for all mobile brands with genuine LCD/OLED displays and touch panels</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">🔋</div>
+                <h3>Battery Replacement</h3>
+                <p>High-quality battery replacement service to restore your phone's power and performance</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">💧</div>
+                <h3>Water Damage Repair</h3>
+                <p>Expert water damage restoration using advanced techniques and equipment</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">🔧</div>
+                <h3>Hardware Repair</h3>
+                <p>Complete hardware diagnostics and repair for charging ports, speakers, cameras, and more</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">💻</div>
+                <h3>Software Solutions</h3>
+                <p>Software troubleshooting, OS updates, data recovery, and performance optimization</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">⚡</div>
+                <h3>Express Service</h3>
+                <p>Fast repair service for urgent fixes - most repairs completed within 30 minutes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="section-title">
+            <h2>Report Your Issue</h2>
+            <p>Tell us about your mobile hardware or software problem and we'll get back to you quickly</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="issueForm" class="issue-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="customerName">Your Name *</label>
+                        <input type="text" id="customerName" name="customerName" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="customerPhone">Phone Number *</label>
+                        <input type="tel" id="customerPhone" name="customerPhone" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="customerEmail">Email Address</label>
+                        <input type="email" id="customerEmail" name="customerEmail" class="form-input">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label" for="customerLocation">Your Location & Address *</label>
+                        <textarea id="customerLocation" name="customerLocation" class="form-textarea" 
+                                  placeholder="Please provide your complete address including area, landmarks, city, and pincode for pickup/delivery service..." required style="min-height: 80px;"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="deviceBrand">Device Brand *</label>
+                        <select id="deviceBrand" name="deviceBrand" class="form-select" required>
+                            <option value="">Select Brand</option>
+                            <option value="Apple">Apple iPhone</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="OnePlus">OnePlus</option>
+                            <option value="Xiaomi">Xiaomi/Mi/Redmi</option>
+                            <option value="Oppo">Oppo</option>
+                            <option value="Vivo">Vivo</option>
+                            <option value="Realme">Realme</option>
+                            <option value="Huawei">Huawei</option>
+                            <option value="Google">Google Pixel</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Nokia">Nokia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="deviceModel">Device Model *</label>
+                        <input type="text" id="deviceModel" name="deviceModel" class="form-input" placeholder="e.g., iPhone 14, Galaxy S23" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="urgency">Urgency Level *</label>
+                        <select id="urgency" name="urgency" class="form-select" required>
+                            <option value="">Select Urgency</option>
+                            <option value="Low">Low - Can wait a few days</option>
+                            <option value="Medium">Medium - Need within 24 hours</option>
+                            <option value="High">High - Urgent, same day service</option>
+                            <option value="Critical">Critical - Emergency repair needed</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Issue Type * (Select all that apply)</label>
+                    <div class="issue-type-grid">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="screen" name="issueType" value="Screen Damage">
+                            <label for="screen">📱 Screen Damage</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="battery" name="issueType" value="Battery Issues">
+                            <label for="battery">🔋 Battery Issues</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="charging" name="issueType" value="Charging Problems">
+                            <label for="charging">🔌 Charging Problems</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="water" name="issueType" value="Water Damage">
+                            <label for="water">💧 Water Damage</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="speaker" name="issueType" value="Speaker/Audio">
+                            <label for="speaker">🔊 Speaker/Audio</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="camera" name="issueType" value="Camera Issues">
+                            <label for="camera">📷 Camera Issues</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="software" name="issueType" value="Software Problems">
+                            <label for="software">💻 Software Problems</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="network" name="issueType" value="Network/WiFi">
+                            <label for="network">📶 Network/WiFi</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="buttons" name="issueType" value="Button Issues">
+                            <label for="buttons">🔘 Button Issues</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="other" name="issueType" value="Other">
+                            <label for="other">🔧 Other Hardware</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label" for="issueDescription">Detailed Problem Description *</label>
+                    <textarea id="issueDescription" name="issueDescription" class="form-textarea" 
+                              placeholder="Please describe your issue in detail. Include when it started, what you were doing when it happened, and any error messages you've seen..." required></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label" for="previousRepairs">Previous Repairs</label>
+                    <textarea id="previousRepairs" name="previousRepairs" class="form-textarea" 
+                              placeholder="Have you had this device repaired before? If yes, please provide details..."></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Rate Our Previous Service (if applicable)</label>
+                    <div class="rating-container">
+                        <div class="star-rating" id="serviceRating">
+                            <span class="star" data-rating="1">⭐</span>
+                            <span class="star" data-rating="2">⭐</span>
+                            <span class="star" data-rating="3">⭐</span>
+                            <span class="star" data-rating="4">⭐</span>
+                            <span class="star" data-rating="5">⭐</span>
+                        </div>
+                        <span class="rating-text" id="ratingText">Click to rate our service</span>
+                        <input type="hidden" id="serviceRatingValue" name="serviceRating" value="0">
+                    </div>
+                </div>
+                
+                <!-- Captcha -->
+                <div class="captcha-container">
+                    <div class="captcha-question" id="captchaQuestion">What is 5 + 3?</div>
+                    <input type="number" id="captchaAnswer" class="captcha-input" placeholder="Answer" required>
+                    <button type="button" class="captcha-refresh" onclick="generateCaptcha()">🔄 New Question</button>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Issue Report
+                </button>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Thank you! Your issue has been reported successfully. We'll contact you within 2 hours during business hours.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Mobile Accessories</h2>
+            <p>Premium quality mobile accessories for all your smartphone needs</p>
+        </div>
+        
+        <div class="products-filter">
+            <button class="filter-btn active" data-filter="all">All Products</button>
+            <button class="filter-btn" data-filter="covers">Mobile Covers</button>
+            <button class="filter-btn" data-filter="glass">Tempered Glass</button>
+            <button class="filter-btn" data-filter="chargers">Chargers</button>
+            <button class="filter-btn" data-filter="cables">Cables</button>
+            <button class="filter-btn" data-filter="headsets">Headsets</button>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AM Mobiles</h3>
+                <p>Your trusted partner for mobile repairs and accessories. We provide quality service with genuine parts and expert care.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📞</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Screen Repair</a></li>
+                    <li><a href="#">Battery Replacement</a></li>
+                    <li><a href="#">Water Damage Repair</a></li>
+                    <li><a href="#">Hardware Repair</a></li>
+                    <li><a href="#">Software Solutions</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#">Mobile Covers</a></li>
+                    <li><a href="#">Tempered Glass</a></li>
+                    <li><a href="#">Chargers & Cables</a></li>
+                    <li><a href="#">Headsets & Earphones</a></li>
+                    <li><a href="#">Power Banks</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 Warramgadda, Near Railway Gate</p>
+                <p>📞 6305045880</p>
+                <p>✉️ info@ammobiles.com</p>
+                <p>🕒 Daily: 9:00 AM - 9:00 PM</p>
+                <p>🛡️ 365 Days Service Available</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AM Mobiles. All rights reserved. | Quality Service | Genuine Parts | Expert Care</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: </span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        class AMMobiles {
+            constructor() {
+                this.products = [
+                    // Mobile Covers
+                    {
+                        id: 1,
+                        name: "Premium Leather Case",
+                        category: "covers",
+                        price: 599,
+                        originalPrice: 799,
+                        description: "Genuine leather case with card slots and magnetic closure",
+                        image: "📱",
+                        badge: "Premium"
+                    },
+                    {
+                        id: 2,
+                        name: "Shockproof Armor Case",
+                        category: "covers",
+                        price: 399,
+                        originalPrice: 599,
+                        description: "Military-grade protection with reinforced corners",
+                        image: "🛡️",
+                        badge: "Bestseller"
+                    },
+                    {
+                        id: 3,
+                        name: "Clear Crystal Case",
+                        category: "covers",
+                        price: 199,
+                        originalPrice: null,
+                        description: "Ultra-clear TPU case with anti-yellowing technology",
+                        image: "💎",
+                        badge: "New"
+                    },
+                    
+                    // Tempered Glass
+                    {
+                        id: 4,
+                        name: "9H Tempered Glass",
+                        category: "glass",
+                        price: 299,
+                        originalPrice: 499,
+                        description: "Premium 9H hardness with oleophobic coating",
+                        image: "🔍",
+                        badge: "Popular"
+                    },
+                    {
+                        id: 5,
+                        name: "Privacy Screen Guard",
+                        category: "glass",
+                        price: 499,
+                        originalPrice: 699,
+                        description: "Anti-spy tempered glass with 28° privacy angle",
+                        image: "🕶️",
+                        badge: "Premium"
+                    },
+                    {
+                        id: 6,
+                        name: "Full Coverage Glass",
+                        category: "glass",
+                        price: 399,
+                        originalPrice: null,
+                        description: "Edge-to-edge protection with perfect fit",
+                        image: "📲",
+                        badge: "New"
+                    },
+                    
+                    // Chargers
+                    {
+                        id: 7,
+                        name: "Fast Wireless Charger",
+                        category: "chargers",
+                        price: 1299,
+                        originalPrice: 1799,
+                        description: "15W Qi-certified wireless charging pad",
+                        image: "⚡",
+                        badge: "Fast"
+                    },
+                    {
+                        id: 8,
+                        name: "65W GaN Charger",
+                        category: "chargers",
+                        price: 1999,
+                        originalPrice: 2499,
+                        description: "Compact GaN technology with multiple ports",
+                        image: "🔌",
+                        badge: "Premium"
+                    },
+                    {
+                        id: 9,
+                        name: "Car Charger Dual USB",
+                        category: "chargers",
+                        price: 399,
+                        originalPrice: null,
+                        description: "Fast charging for two devices simultaneously",
+                        image: "🚗",
+                        badge: "Popular"
+                    },
+                    
+                    // Cables
+                    {
+                        id: 10,
+                        name: "Braided USB-C Cable",
+                        category: "cables",
+                        price: 299,
+                        originalPrice: 499,
+                        description: "Durable nylon braided cable with fast charging",
+                        image: "🔗",
+                        badge: "Durable"
+                    },
+                    {
+                        id: 11,
+                        name: "Lightning Cable MFi",
+                        category: "cables",
+                        price: 599,
+                        originalPrice: 799,
+                        description: "Apple MFi certified lightning cable",
+                        image: "⚡",
+                        badge: "Certified"
+                    },
+                    {
+                        id: 12,
+                        name: "Magnetic Cable 3-in-1",
+                        category: "cables",
+                        price: 799,
+                        originalPrice: null,
+                        description: "Magnetic connector with Type-C, Lightning, Micro USB",
+                        image: "🧲",
+                        badge: "Innovative"
+                    },
+                    
+                    // Headsets
+                    {
+                        id: 13,
+                        name: "Wireless Earbuds Pro",
+                        category: "headsets",
+                        price: 2999,
+                        originalPrice: 3999,
+                        description: "Active noise cancellation with premium sound",
+                        image: "🎧",
+                        badge: "Pro"
+                    },
+                    {
+                        id: 14,
+                        name: "Gaming Headset RGB",
+                        category: "headsets",
+                        price: 1999,
+                        originalPrice: 2799,
+                        description: "7.1 surround sound with RGB lighting",
+                        image: "🎮",
+                        badge: "Gaming"
+                    },
+                    {
+                        id: 15,
+                        name: "Sport Bluetooth Earphones",
+                        category: "headsets",
+                        price: 1299,
+                        originalPrice: null,
+                        description: "Sweat-resistant with secure fit design",
+                        image: "🏃",
+                        badge: "Sport"
+                    }
+                ];
+                
+                this.cart = [];
+                this.currentFilter = 'all';
+                this.captchaAnswer = 0;
+                
+                this.init();
+            }
+            
+            init() {
+                this.createAnimatedBackground();
+                this.renderProducts();
+                this.bindEvents();
+                this.updateCartUI();
+                this.initScrollEffects();
+                this.initScrollAnimations();
+                this.generateCaptcha();
+                this.initMobileMenu();
+            }
+            
+            createAnimatedBackground() {
+                const bg = document.getElementById('animatedBg');
+                
+                // Create floating particles
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'bg-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 8 + 's';
+                    particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    bg.appendChild(particle);
+                }
+                
+                // Create magical bubbles
+                for (let i = 0; i < 15; i++) {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'magic-bubble';
+                    const size = Math.random() * 60 + 20;
+                    bubble.style.width = size + 'px';
+                    bubble.style.height = size + 'px';
+                    bubble.style.left = Math.random() * 100 + '%';
+                    bubble.style.animationDelay = Math.random() * 12 + 's';
+                    bubble.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                    bg.appendChild(bubble);
+                }
+                
+                // Create floating tech icons
+                const techIcons = ['🔧', '⚡', '🔋', '📱', '💻', '🛠️', '⚙️', '🔌', '📡', '💾'];
+                for (let i = 0; i < 20; i++) {
+                    const icon = document.createElement('div');
+                    icon.className = 'tech-icon';
+                    icon.textContent = techIcons[Math.floor(Math.random() * techIcons.length)];
+                    icon.style.left = Math.random() * 100 + '%';
+                    icon.style.animationDelay = Math.random() * 15 + 's';
+                    icon.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    bg.appendChild(icon);
+                }
+                
+                // Create circuit lines
+                for (let i = 0; i < 8; i++) {
+                    const line = document.createElement('div');
+                    line.className = 'circuit-line';
+                    line.style.width = Math.random() * 200 + 100 + 'px';
+                    line.style.top = Math.random() * 100 + '%';
+                    line.style.left = Math.random() * 100 + '%';
+                    line.style.animationDelay = Math.random() * 3 + 's';
+                    line.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    bg.appendChild(line);
+                }
+                
+                // Create magic wands
+                for (let i = 0; i < 5; i++) {
+                    const wand = document.createElement('div');
+                    wand.className = 'magic-wand';
+                    wand.style.top = Math.random() * 100 + '%';
+                    wand.style.left = Math.random() * 100 + '%';
+                    wand.style.animationDelay = Math.random() * 4 + 's';
+                    bg.appendChild(wand);
+                    
+                    // Add magic trail
+                    setTimeout(() => {
+                        for (let j = 0; j < 10; j++) {
+                            const trail = document.createElement('div');
+                            trail.className = 'magic-trail';
+                            trail.style.top = Math.random() * 100 + '%';
+                            trail.style.left = Math.random() * 100 + '%';
+                            trail.style.animationDelay = j * 0.1 + 's';
+                            bg.appendChild(trail);
+                            
+                            setTimeout(() => trail.remove(), 2000);
+                        }
+                    }, i * 1000);
+                }
+            }
+            
+            initMobileMenu() {
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const navMenu = document.getElementById('navMenu');
+                
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+                });
+                
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.textContent = '☰';
+                    });
+                });
+            }
+            
+            generateCaptcha() {
+                const num1 = Math.floor(Math.random() * 10) + 1;
+                const num2 = Math.floor(Math.random() * 10) + 1;
+                const operations = ['+', '-', '*'];
+                const operation = operations[Math.floor(Math.random() * operations.length)];
+                
+                let answer;
+                let questionText;
+                
+                switch(operation) {
+                    case '+':
+                        answer = num1 + num2;
+                        questionText = `What is ${num1} + ${num2}?`;
+                        break;
+                    case '-':
+                        answer = Math.max(num1, num2) - Math.min(num1, num2);
+                        questionText = `What is ${Math.max(num1, num2)} - ${Math.min(num1, num2)}?`;
+                        break;
+                    case '*':
+                        const smallNum1 = Math.floor(Math.random() * 5) + 1;
+                        const smallNum2 = Math.floor(Math.random() * 5) + 1;
+                        answer = smallNum1 * smallNum2;
+                        questionText = `What is ${smallNum1} × ${smallNum2}?`;
+                        break;
+                }
+                
+                this.captchaAnswer = answer;
+                document.getElementById('captchaQuestion').textContent = questionText;
+                document.getElementById('captchaAnswer').value = '';
+            }
+            
+            bindEvents() {
+                // Filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.filterProducts(e.target.dataset.filter);
+                    });
+                });
+                
+                // Cart toggle
+                document.getElementById('cartToggle').addEventListener('click', () => {
+                    this.toggleCart();
+                });
+                
+                document.getElementById('closeCart').addEventListener('click', () => {
+                    this.closeCart();
+                });
+                
+                document.getElementById('cartOverlay').addEventListener('click', () => {
+                    this.closeCart();
+                });
+                
+                // Form submission
+                document.getElementById('issueForm').addEventListener('submit', (e) => {
+                    this.handleFormSubmit(e);
+                });
+                
+                // Robot interaction
+                document.getElementById('repairRobot').addEventListener('click', () => {
+                    this.robotInteraction();
+                });
+                
+                // Smooth scrolling for navigation links
+                document.querySelectorAll('.nav-link, .cta-button').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href');
+                        if (targetId.startsWith('#')) {
+                            const targetElement = document.querySelector(targetId);
+                            if (targetElement) {
+                                targetElement.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }
+                        }
+                    });
+                });
+                
+                // Start robot sparks animation
+                this.startRobotSparks();
+            }
+            
+            handleFormSubmit(e) {
+                e.preventDefault();
+                
+                // Validate captcha
+                const userAnswer = parseInt(document.getElementById('captchaAnswer').value);
+                if (userAnswer !== this.captchaAnswer) {
+                    this.showNotification('Please solve the captcha correctly!', 'error');
+                    return;
+                }
+                
+                // Validate issue types
+                const issueTypes = document.querySelectorAll('input[name="issueType"]:checked');
+                if (issueTypes.length === 0) {
+                    this.showNotification('Please select at least one issue type!', 'error');
+                    return;
+                }
+                
+                // Collect form data
+                const formData = new FormData(e.target);
+                const issueData = {
+                    customerName: formData.get('customerName'),
+                    customerPhone: formData.get('customerPhone'),
+                    customerEmail: formData.get('customerEmail'),
+                    deviceBrand: formData.get('deviceBrand'),
+                    deviceModel: formData.get('deviceModel'),
+                    urgency: formData.get('urgency'),
+                    issueTypes: Array.from(issueTypes).map(cb => cb.value),
+                    issueDescription: formData.get('issueDescription'),
+                    previousRepairs: formData.get('previousRepairs'),
+                    submittedAt: new Date().toISOString()
+                };
+                
+                // Simulate form submission
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                setTimeout(() => {
+                    // Show success message
+                    document.getElementById('successMessage').classList.add('show');
+                    
+                    // Reset form
+                    e.target.reset();
+                    this.generateCaptcha();
+                    
+                    // Reset submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Issue Report';
+                    
+                    // Show notification
+                    this.showNotification('Issue reported successfully! We\'ll contact you soon.', 'success');
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                    
+                    console.log('Issue Report Submitted:', issueData);
+                }, 2000);
+            }
+            
+            renderProducts() {
+                const grid = document.getElementById('productsGrid');
+                const filteredProducts = this.currentFilter === 'all' 
+                    ? this.products 
+                    : this.products.filter(p => p.category === this.currentFilter);
+                
+                grid.innerHTML = filteredProducts.map(product => `
+                    <div class="product-card fade-in-up" data-category="${product.category}">
+                        <div class="product-image">
+                            ${product.image}
+                            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                            <div class="product-actions">
+                                <button class="action-btn" onclick="store.addToWishlist(${product.id})" title="Add to Wishlist">❤️</button>
+                                <button class="action-btn" onclick="store.quickView(${product.id})" title="Quick View">👁️</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-price">
+                                <span class="current-price">₹${product.price}</span>
+                                ${product.originalPrice ? `<span class="original-price">₹${product.originalPrice}</span>` : ''}
+                            </div>
+                            <button class="add-to-cart" onclick="store.addToCart(${product.id})">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Re-initialize scroll animations for new products
+                this.initScrollAnimations();
+            }
+            
+            filterProducts(category) {
+                this.currentFilter = category;
+                
+                // Update filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+                
+                // Re-render products
+                this.renderProducts();
+            }
+            
+            addToCart(productId) {
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return;
+                
+                const existingItem = this.cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.cart.push({
+                        ...product,
+                        quantity: 1
+                    });
+                }
+                
+                this.updateCartUI();
+                this.showNotification(`${product.name} added to cart!`, 'success');
+            }
+            
+            removeFromCart(productId) {
+                this.cart = this.cart.filter(item => item.id !== productId);
+                this.updateCartUI();
+            }
+            
+            updateQuantity(productId, change) {
+                const item = this.cart.find(item => item.id === productId);
+                if (!item) return;
+                
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    this.removeFromCart(productId);
+                } else {
+                    this.updateCartUI();
+                }
+            }
+            
+            updateCartUI() {
+                const cartCount = document.getElementById('cartCount');
+                const cartItems = document.getElementById('cartItems');
+                const cartTotal = document.getElementById('cartTotal');
+                
+                // Update cart count
+                const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+                
+                // Update cart items
+                if (this.cart.length === 0) {
+                    cartItems.innerHTML = '<div style="text-align: center; padding: 2rem; color: #666666;">Your cart is empty</div>';
+                } else {
+                    cartItems.innerHTML = this.cart.map(item => `
+                        <div class="cart-item">
+                            <div class="cart-item-image">${item.image}</div>
+                            <div class="cart-item-info">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">₹${item.price}</div>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="store.updateQuantity(${item.id}, -1)">-</button>
+                                    <span style="color: #ff6600; font-weight: 600; margin: 0 0.5rem;">${item.quantity}</span>
+                                    <button class="quantity-btn" onclick="store.updateQuantity(${item.id}, 1)">+</button>
+                                    <button class="quantity-btn" onclick="store.removeFromCart(${item.id})" style="margin-left: 1rem; color: #dc3545;">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+                
+                // Update total
+                const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `₹${total}`;
+            }
+            
+            toggleCart() {
+                const sidebar = document.getElementById('cartSidebar');
+                const overlay = document.getElementById('cartOverlay');
+                
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('active');
+            }
+            
+            closeCart() {
+                const sidebar = document.getElementById('cartSidebar');
+                const overlay = document.getElementById('cartOverlay');
+                
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            }
+            
+            showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: ${type === 'success' ? 'linear-gradient(135deg, #ff6600, #ff8533)' : 'linear-gradient(135deg, #dc3545, #c82333)'};
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 10px;
+                    box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+                    z-index: 3000;
+                    font-weight: 600;
+                    animation: slideInRight 0.3s ease;
+                    max-width: 300px;
+                `;
+                notification.innerHTML = `${type === 'success' ? '✅' : '❌'} ${message}`;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOutRight 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+            
+            addToWishlist(productId) {
+                const product = this.products.find(p => p.id === productId);
+                this.showNotification(`${product.name} added to wishlist!`, 'success');
+            }
+            
+            quickView(productId) {
+                const product = this.products.find(p => p.id === productId);
+                this.showNotification(`Quick view: ${product.name} - ₹${product.price}`, 'success');
+            }
+            
+            initScrollEffects() {
+                // Header scroll effect
+                window.addEventListener('scroll', () => {
+                    const header = document.getElementById('header');
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            initScrollAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+                
+                // Observe elements for animation
+                document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            startRobotSparks() {
+                const sparksContainer = document.getElementById('repairSparks');
+                
+                setInterval(() => {
+                    // Create repair sparks
+                    for (let i = 0; i < 5; i++) {
+                        const spark = document.createElement('div');
+                        spark.className = 'spark';
+                        
+                        const x = (Math.random() - 0.5) * 60;
+                        const y = (Math.random() - 0.5) * 60;
+                        
+                        spark.style.setProperty('--spark-x', x + 'px');
+                        spark.style.setProperty('--spark-y', y + 'px');
+                        spark.style.left = Math.random() * 20 + 'px';
+                        spark.style.top = Math.random() * 20 + 'px';
+                        spark.style.animationDelay = i * 0.1 + 's';
+                        
+                        sparksContainer.appendChild(spark);
+                        
+                        setTimeout(() => spark.remove(), 1000);
+                    }
+                }, 2000);
+            }
+            
+            robotInteraction() {
+                const robot = document.getElementById('repairRobot');
+                const messages = [
+                    "🤖 Beep! AM Mobiles repair bot at your service!",
+                    "⚡ Scanning for mobile issues... All systems operational!",
+                    "🔧 Ready to fix any mobile problem! Click 'Report Issue' above!",
+                    "📱 Expert mobile repair services available 24/7!",
+                    "🛠️ Quality repairs with genuine parts guaranteed!",
+                    "💫 Magic touch for all your mobile repair needs!"
+                ];
+                
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                this.showNotification(randomMessage, 'success');
+                
+                // Add special animation
+                robot.style.animation = 'none';
+                robot.style.transform = 'scale(1.2) rotate(10deg)';
+                
+                setTimeout(() => {
+                    robot.style.animation = 'robotHover 3s ease-in-out infinite';
+                    robot.style.transform = '';
+                }, 500);
+                
+                // Create extra sparks on click
+                const sparksContainer = document.getElementById('repairSparks');
+                for (let i = 0; i < 15; i++) {
+                    const spark = document.createElement('div');
+                    spark.className = 'spark';
+                    
+                    const x = (Math.random() - 0.5) * 100;
+                    const y = (Math.random() - 0.5) * 100;
+                    
+                    spark.style.setProperty('--spark-x', x + 'px');
+                    spark.style.setProperty('--spark-y', y + 'px');
+                    spark.style.left = Math.random() * 40 + 'px';
+                    spark.style.top = Math.random() * 40 + 'px';
+                    spark.style.animationDelay = i * 0.05 + 's';
+                    spark.style.background = ['#ffff00', '#ff6600', '#ff8533', '#ffaa00'][Math.floor(Math.random() * 4)];
+                    
+                    sparksContainer.appendChild(spark);
+                    
+                    setTimeout(() => spark.remove(), 1000);
+                }
+                
+                // Add magical bubble burst
+                const bg = document.getElementById('animatedBg');
+                for (let i = 0; i < 10; i++) {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'magic-bubble';
+                    const size = Math.random() * 30 + 10;
+                    bubble.style.width = size + 'px';
+                    bubble.style.height = size + 'px';
+                    bubble.style.left = '85%';
+                    bubble.style.bottom = '10%';
+                    bubble.style.position = 'fixed';
+                    bubble.style.animationDuration = '2s';
+                    bubble.style.animationDelay = i * 0.1 + 's';
+                    bg.appendChild(bubble);
+                    
+                    setTimeout(() => bubble.remove(), 3000);
+                }
+            }
+        }
+        
+        // Global functions
+        function generateCaptcha() {
+            store.generateCaptcha();
+        }
+        
+        function checkout() {
+            if (store.cart.length === 0) {
+                store.showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = store.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            store.showNotification(`Proceeding to checkout - Total: ₹${total}`, 'success');
+            
+            // Simulate checkout process
+            setTimeout(() => {
+                store.showNotification('Order placed successfully! We will contact you soon.', 'success');
+                store.cart = [];
+                store.updateCartUI();
+                store.closeCart();
+            }, 2000);
+        }
+        
+        // Initialize the store
+        let store;
+        document.addEventListener('DOMContentLoaded', () => {
+            store = new AMMobiles();
+        });
+        
+        // Add CSS animations for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963d0bc9c06b7f8e',t:'MTc1MzI5MzI5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
